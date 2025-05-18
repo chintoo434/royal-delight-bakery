@@ -10,7 +10,13 @@ const products = [
       desc: 'Creamy red velvet cupcake',
       price: 150,
       img: 'img/cake2.jpg'
-    }
+    },
+    {
+        name: 'Red Velvet Cupcake',
+        desc: 'Creamy red velvet cupcake',
+        price: 150,
+        img: 'img/cake2.jpg'
+      }
   ];
   
   const productList = document.getElementById('product-list');
