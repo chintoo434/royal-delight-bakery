@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Royal Delight Bakery</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <p class="contact">To place order Call on 9760648714</p>
+  </header>
+  <main>
+    <form id="product-form">
+      <input type="text" id="product-name" placeholder="Product Name" required>
+      <textarea id="product-desc" placeholder="Product Description" required></textarea>
+      <input type="number" id="product-price" placeholder="Price" required>
+      <input type="file" id="product-image" accept="image/*" required>
+      <button type="submit">Add Product</button>
+    </form>
+    <div id="admin-preview"></div>
+  </main>
+  <script src="js/admin.js"></script>
+</body>
+</html>
