@@ -226,5 +226,59 @@ body {
     color: white;
   }
   
+  /* Responsive adjustments */
+@media (max-width: 600px) {
+  header {
+    padding: 1.5rem 1rem 3rem; /* More bottom padding for cart icon space */
+    text-align: center;
+    position: relative;
+  }
+
+  /* Stack header elements vertically */
+  header h1,
+  .contact,
+  .location,
+  #search {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Make search input width 90% max 300px */
+  #search {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Move cart icon below the header text for better mobile layout */
+  #cart-icon {
+    position: static; /* remove absolute */
+    margin: 1rem auto 0;
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* Slightly smaller font sizes */
+  header h1 {
+    font-size: 1.8rem;
+  }
   
+  .contact {
+    font-size: 1rem;
+  }
+
+  .location {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Optional: Improve clickable area on small devices */
+#cart-icon {
+  touch-action: manipulation;
+  user-select: none;
+}
+
   
