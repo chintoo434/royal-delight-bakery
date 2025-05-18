@@ -45,6 +45,7 @@ let cart = {}; // key: productName|sizeLabel, value: { name, size, price, quanti
 // Render all products
 function renderProducts(filter = '', category = '') {
   productList.innerHTML = '';
+
   products
     .filter(p =>
       p.name.toLowerCase().includes(filter.toLowerCase()) &&
@@ -55,16 +56,35 @@ function renderProducts(filter = '', category = '') {
       div.className = 'product';
 
       let sizeOptionsHTML = '';
-      let priceDisplay = p.price ? `<strong>₹${p.price}</strong>` : '';
+      let selectedSize = '';
+      let price = p.price;
 
       if (p.sizes) {
-        const defaultSize = p.sizes[0];
-        priceDisplay = `<strong id="price-${p.name}">₹${defaultSize.price}</strong>`;
+        selectedSize = p.sizes[0].label;
+        price = p.sizes[0].price;
         sizeOptionsHTML = `
-          <select class="size-select" data-product="${p.name}" onchange="updatePrice(this)">
+          <select class="size-select" data-product="${p.name}">
             ${p.sizes.map(s => `<option value="${s.label}" data-price="${s.price}">${s.label}</option>`).join('')}
           </select>
         `;
+      }
+
+      // Construct key for cart lookup
+      const key = selectedSize ? `${p.name}|${selectedSize}` : p.name;
+      const itemInCart = cart[key];
+
+      // Buttons depending on whether item is in cart
+      let actionButtonsHTML = '';
+      if (itemInCart) {
+        actionButtonsHTML = `
+          <div class="qty-controls">
+            <button class="qty-btn" onclick='changeQty("${key}", -1)'>−</button>
+            <span>${itemInCart.quantity}</span>
+            <button class="qty-btn" onclick='changeQty("${key}", 1)'>＋</button>
+          </div>
+        `;
+      } else {
+        actionButtonsHTML = `<button onclick='addToCart("${p.name}")'>Add to Cart</button>`;
       }
 
       div.innerHTML = `
@@ -72,13 +92,39 @@ function renderProducts(filter = '', category = '') {
         <h3>${p.name}</h3>
         <p>${p.desc}</p>
         ${sizeOptionsHTML}
-        ${priceDisplay}<br>
-        <button onclick='addToCart("${p.name}")'>Add to Cart</button>
+        <strong id="price-${p.name}">₹${price}</strong><br>
+        <div id="action-${p.name}">${actionButtonsHTML}</div>
       `;
 
       productList.appendChild(div);
     });
+
+  // Add listeners to size dropdowns
+  document.querySelectorAll('.size-select').forEach(select => {
+    select.addEventListener('change', function () {
+      updatePrice(this);
+      const name = this.dataset.product;
+      const selectedSize = this.value;
+      const price = parseInt(this.selectedOptions[0].dataset.price);
+      const key = `${name}|${selectedSize}`;
+      const itemInCart = cart[key];
+
+      const actionDiv = document.getElementById(`action-${name}`);
+      if (itemInCart) {
+        actionDiv.innerHTML = `
+          <div class="qty-controls">
+            <button class="qty-btn" onclick='changeQty("${key}", -1)'>−</button>
+            <span>${itemInCart.quantity}</span>
+            <button class="qty-btn" onclick='changeQty("${key}", 1)'>＋</button>
+          </div>
+        `;
+      } else {
+        actionDiv.innerHTML = `<button onclick='addToCart("${name}")'>Add to Cart</button>`;
+      }
+    });
+  });
 }
+
 
 // Update price display on size change
 function updatePrice(select) {
