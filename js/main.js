@@ -1,4 +1,3 @@
-
 const productList = document.getElementById('product-list');
 const cartItems = document.getElementById('cart-items');
 const cartCount = document.getElementById('cart-count');
@@ -39,11 +38,9 @@ function renderProducts(filter = '', category = '') {
         `;
       }
 
-      // Construct key for cart lookup
       const key = selectedSize ? `${p.name}|${selectedSize}` : p.name;
       const itemInCart = cart[key];
 
-      // Buttons depending on whether item is in cart
       let actionButtonsHTML = '';
       if (itemInCart) {
         actionButtonsHTML = `
@@ -69,13 +66,12 @@ function renderProducts(filter = '', category = '') {
       productList.appendChild(div);
     });
 
-  // Add listeners to size dropdowns
+  // Attach size change listener
   document.querySelectorAll('.size-select').forEach(select => {
     select.addEventListener('change', function () {
       updatePrice(this);
       const name = this.dataset.product;
       const selectedSize = this.value;
-      const price = parseInt(this.selectedOptions[0].dataset.price);
       const key = `${name}|${selectedSize}`;
       const itemInCart = cart[key];
 
@@ -95,15 +91,14 @@ function renderProducts(filter = '', category = '') {
   });
 }
 
-
-// Update price display on size change
+// Update price display
 function updatePrice(select) {
   const price = select.options[select.selectedIndex].dataset.price;
   const name = select.dataset.product;
   document.getElementById(`price-${name}`).innerText = `₹${price}`;
 }
 
-// Add item to cart with selected size
+// Add item to cart
 function addToCart(name) {
   const product = products.find(p => p.name === name);
   let size = '';
@@ -120,18 +115,23 @@ function addToCart(name) {
   if (cart[key]) {
     cart[key].quantity += 1;
   } else {
-    cart[key] = {
-      name,
-      size,
-      price,
-      quantity: 1
-    };
+    cart[key] = { name, size, price, quantity: 1 };
   }
 
   updateCart();
+
+  // Manually update only this product’s action buttons
+  const actionDiv = document.getElementById(`action-${name}`);
+  actionDiv.innerHTML = `
+    <div class="qty-controls">
+      <button class="qty-btn" onclick='changeQty("${key}", -1)'>−</button>
+      <span>${cart[key].quantity}</span>
+      <button class="qty-btn" onclick='changeQty("${key}", 1)'>＋</button>
+    </div>
+  `;
 }
 
-// Change quantity
+// Change item quantity
 function changeQty(key, delta) {
   if (cart[key]) {
     cart[key].quantity += delta;
@@ -139,10 +139,24 @@ function changeQty(key, delta) {
       delete cart[key];
     }
     updateCart();
+
+    const [name, size] = key.split('|');
+    const actionDiv = document.getElementById(`action-${name}`);
+    if (!cart[key]) {
+      actionDiv.innerHTML = `<button onclick='addToCart("${name}")'>Add to Cart</button>`;
+    } else {
+      actionDiv.innerHTML = `
+        <div class="qty-controls">
+          <button class="qty-btn" onclick='changeQty("${key}", -1)'>−</button>
+          <span>${cart[key].quantity}</span>
+          <button class="qty-btn" onclick='changeQty("${key}", 1)'>＋</button>
+        </div>
+      `;
+    }
   }
 }
 
-// Update cart UI and WhatsApp link
+// Update cart UI
 function updateCart() {
   cartItems.innerHTML = '';
   let cartCountValue = 0;
@@ -177,27 +191,24 @@ function updateCart() {
     whatsappLink.href = `https://wa.me/+919760648714`;
   }
 
-  renderProducts(searchInput.value, selectedCategory);
+  // 🚫 Do NOT call renderProducts() here — size selection stays intact
 }
 
-// Clear cart
+// Init event listeners
 clearCartBtn.addEventListener('click', () => {
   cart = {};
   updateCart();
 });
 
-// Cart click
 cartIcon.addEventListener('click', () => {
   cartBox.style.display = 'block';
   cartBox.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Search input
 searchInput.addEventListener('input', e => {
   renderProducts(e.target.value, selectedCategory);
 });
 
-// Category filter
 document.querySelectorAll('#category-menu button').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#category-menu button').forEach(b => b.classList.remove('active'));
@@ -207,7 +218,6 @@ document.querySelectorAll('#category-menu button').forEach(btn => {
   });
 });
 
-// Sticky bakery name
 window.addEventListener('scroll', () => {
   if (window.scrollY > 80) {
     bakeryName.classList.add('fixed');
