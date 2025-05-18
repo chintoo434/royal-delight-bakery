@@ -335,3 +335,24 @@ header h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.fancy-heading {
+  font-family: 'Pacifico', cursive; /* or import a similar cursive font */
+  font-size: 2.5rem;
+  color: #004aad;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.4rem;
+}
+
+.highlight-contact {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #5c3d2e;
+  background: #fff4e6;
+  border-left: 5px solid #f7a072;
+  padding: 0.7rem 1rem;
+  margin: 0.5rem auto;
+  width: fit-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: inline-block;
+}
