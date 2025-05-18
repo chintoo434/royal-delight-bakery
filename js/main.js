@@ -198,7 +198,19 @@ function updateCart() {
 clearCartBtn.addEventListener('click', () => {
   cart = {};
   updateCart();
+
+  // Re-render action buttons for all visible products
+  document.querySelectorAll('.product').forEach(productEl => {
+    const name = productEl.querySelector('h3').innerText;
+    const select = productEl.querySelector('select');
+    const selectedSize = select ? select.value : '';
+    const key = selectedSize ? `${name}|${selectedSize}` : name;
+
+    const actionDiv = document.getElementById(`action-${name}`);
+    actionDiv.innerHTML = `<button onclick='addToCart("${name}")'>Add to Cart</button>`;
+  });
 });
+
 
 cartIcon.addEventListener('click', () => {
   cartBox.style.display = 'block';
