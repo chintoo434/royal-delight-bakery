@@ -285,3 +285,20 @@ window.addEventListener('scroll', () => {
 // Init
 renderProducts();
 updateCart();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cartIcon = document.getElementById("cart-icon");
+  const cartCount = document.getElementById("cart-count");
+
+  function updateCartVisibility() {
+    const count = parseInt(cartCount.textContent, 10);
+    cartIcon.style.display = count > 0 ? "inline-block" : "none";
+  }
+
+  updateCartVisibility();
+
+  // Optional: If you update the cart count dynamically elsewhere
+  const observer = new MutationObserver(updateCartVisibility);
+  observer.observe(cartCount, { childList: true });
+});
