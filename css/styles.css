@@ -126,7 +126,7 @@ header h1 {
 }
 
 .product button {
-  background-color: #ef476f;
+  background-color: #6aa536;
   color: white;
   border: none;
   padding: 0.6rem 1rem;
@@ -137,7 +137,7 @@ header h1 {
 }
 
 .product button:hover {
-  background-color: #d63a5f;
+  background-color: #036724;
 }
 
 #cart {
@@ -309,3 +309,29 @@ header h1 {
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
+
+.original-price {
+  text-decoration: line-through;
+  color: #888; /* Light gray color for the original price */
+}
+
+
+/* Positioning the discount wedge on the image */
+.product-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+

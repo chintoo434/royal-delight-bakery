@@ -149,7 +149,7 @@ const products = [
         name: '[C13] Two tier Cake',
         desc: '',
         sizes: [
-          { label: '3 pounds', price: 750 },
+          { label: '3 pounds', price: 750 , discount:150 },
           { label: '5 pounds', price: 1200 }
         ],
         img: 'img/C13.jpg',
@@ -161,9 +161,9 @@ const products = [
         name: '[C14] Doraemon Cake',
         desc: '',
         sizes: [
-          { label: '1 pound', price: 270 },
+          { label: '1 pound', price: 270, discount:50 },
           { label: '2 pounds', price: 520 },
-          { label: '3 pounds', price: 700 }
+          { label: '3 pounds', price: 700, discount:100 }
         ],
         img: 'img/C14.jpg',
         category: 'Cake'

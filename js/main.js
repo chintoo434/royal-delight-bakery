@@ -27,13 +27,26 @@ function renderProducts(filter = '', category = '') {
       let sizeOptionsHTML = '';
       let selectedSize = '';
       let price = p.price;
+      let discountPrice = null;
+      let discountBadge = ''; // To hold the discount badge HTML
 
       if (p.sizes) {
-        selectedSize = p.sizes[0].label;
-        price = p.sizes[0].price;
+        const firstSize = p.sizes[0];
+        selectedSize = firstSize.label;
+        price = firstSize.price;
+        if (firstSize.discount) {
+          discountPrice = price - firstSize.discount;
+          discountBadge = `<div class="discount-badge">Save ₹${firstSize.discount}</div>`; // Discount badge for the first size
+        }
+
         sizeOptionsHTML = `
           <select class="size-select" data-product="${p.name}">
-            ${p.sizes.map(s => `<option value="${s.label}" data-price="${s.price}">${s.label}</option>`).join('')}
+            ${p.sizes.map(s => {
+              const discount = s.discount
+                ? ` data-discount="${s.discount}"`
+                : '';
+              return `<option value="${s.label}" data-price="${s.price}"${discount}>${s.label}</option>`;
+            }).join('')}
           </select>
         `;
       }
@@ -54,12 +67,21 @@ function renderProducts(filter = '', category = '') {
         actionButtonsHTML = `<button onclick='addToCart("${p.name}")'>Add to Cart</button>`;
       }
 
+      // Add discount badge for the image if discount exists
+      const discountImageBadge = discountPrice ? `<div class="discount-badge">${discountBadge}</div>` : '';
+
       div.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" />
+        <div class="product-image-wrapper">
+          <img src="${p.img}" alt="${p.name}" />
+          ${discountImageBadge} <!-- Discount Badge on Image -->
+        </div>
         <h3>${p.name}</h3>
         <p>${p.desc}</p>
         ${sizeOptionsHTML}
-        <strong id="price-${p.name}">₹${price}</strong><br>
+        ${discountPrice !== null
+          ? `<strong id="price-${p.name}"><span class="original-price">₹${price}</span> ₹${discountPrice}</strong><br>`
+          : `<strong id="price-${p.name}">₹${price}</strong><br>`
+        }
         <div id="action-${p.name}">${actionButtonsHTML}</div>
       `;
 
@@ -93,9 +115,30 @@ function renderProducts(filter = '', category = '') {
 
 // Update price display
 function updatePrice(select) {
-  const price = select.options[select.selectedIndex].dataset.price;
+  const price = parseInt(select.options[select.selectedIndex].dataset.price);
+  const discount = parseInt(select.options[select.selectedIndex].dataset.discount || 0);
   const name = select.dataset.product;
-  document.getElementById(`price-${name}`).innerText = `₹${price}`;
+
+  if (discount > 0) {
+    const discountedPrice = price - discount;
+    document.getElementById(`price-${name}`).innerHTML =
+      `<span class="original-price">₹${price}</span> ₹${discountedPrice}`;
+  } else {
+    document.getElementById(`price-${name}`).innerText = `₹${price}`;
+  }
+
+  // Update the discount badge when size is changed
+  const discountBadge = select.selectedOptions[0].dataset.discount
+    ? `<div class="discount-badge">Save ₹${select.selectedOptions[0].dataset.discount}</div>`
+    : '';
+  const imageWrapper = select.closest('.product').querySelector('.product-image-wrapper');
+  const existingBadge = imageWrapper.querySelector('.discount-badge');
+  if (existingBadge) {
+    existingBadge.remove();
+  }
+  if (discountBadge) {
+    imageWrapper.insertAdjacentHTML('beforeend', discountBadge);
+  }
 }
 
 // Add item to cart
@@ -103,11 +146,13 @@ function addToCart(name) {
   const product = products.find(p => p.name === name);
   let size = '';
   let price = product.price;
+  let discount = 0;
 
   if (product.sizes) {
     const select = document.querySelector(`select[data-product="${name}"]`);
     size = select.value;
     price = parseInt(select.options[select.selectedIndex].dataset.price);
+    discount = parseInt(select.options[select.selectedIndex].dataset.discount || 0);
   }
 
   const key = size ? `${name}|${size}` : name;
@@ -115,7 +160,7 @@ function addToCart(name) {
   if (cart[key]) {
     cart[key].quantity += 1;
   } else {
-    cart[key] = { name, size, price, quantity: 1 };
+    cart[key] = { name, size, price, discount, quantity: 1 };
   }
 
   updateCart();
@@ -166,7 +211,7 @@ function updateCart() {
   Object.keys(cart).forEach((key, i) => {
     const item = cart[key];
     cartCountValue += item.quantity;
-    const itemTotal = item.price * item.quantity;
+    const itemTotal = item.price * item.quantity - item.discount * item.quantity;
     total += itemTotal;
 
     cartItems.innerHTML += `
@@ -210,7 +255,6 @@ clearCartBtn.addEventListener('click', () => {
     actionDiv.innerHTML = `<button onclick='addToCart("${name}")'>Add to Cart</button>`;
   });
 });
-
 
 cartIcon.addEventListener('click', () => {
   cartBox.style.display = 'block';
