@@ -3,9 +3,9 @@ const products = [
       name: '[C01] Doll Cake',
       desc: '',
       sizes: [
-        { label: '1 pound', price: 300 },
-        { label: '2 pounds', price: 580 },
-        { label: '3 pounds', price: 850 }
+        { label: '1 pound', price: 300 , discount:30},
+        { label: '2 pounds', price: 580, discount:50 },
+        { label: '3 pounds', price: 850, discount:100 }
       ],
       img: 'img/C01.jpg',
       category: 'Cake'
@@ -16,7 +16,7 @@ const products = [
       desc: '',
       sizes: [
         { label: '1 pound', price: 300 },
-        { label: '2 pounds', price: 580 },
+        { label: '2 pounds', price: 580, discount:30 },
         { label: '3 pounds', price: 850 }
       ],
       img: 'img/C02.jpg',
@@ -161,7 +161,7 @@ const products = [
         name: '[C14] Doraemon Cake',
         desc: '',
         sizes: [
-          { label: '1 pound', price: 270, discount:50 },
+          { label: '1 pound', price: 270, discount:0 },
           { label: '2 pounds', price: 520 },
           { label: '3 pounds', price: 700, discount:100 }
         ],
