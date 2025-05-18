@@ -194,4 +194,20 @@ body {
   #clear-cart:hover {
     background-color: #ef476f;
   }
+
+  .location {
+    font-size: 1rem;
+    margin: 0.3rem 0 1rem;
+  }
+  
+  .location a {
+    color: #ef476f;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .location a:hover {
+    text-decoration: underline;
+  }
+  
   
