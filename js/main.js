@@ -19,18 +19,41 @@ const products = [
     products
       .filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
       .forEach(p => {
+        const quantity = cart[p.name]?.quantity || 0;
         const div = document.createElement('div');
         div.className = 'product';
-        div.innerHTML = `
-          <img src="${p.img}" alt="${p.name}" />
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <strong>₹${p.price}</strong><br>
-          <button onclick='addToCart("${p.name}", ${p.price})'>Add to Cart</button>
-        `;
+  
+        if (quantity === 0) {
+          div.innerHTML = `
+            <img src="${p.img}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <strong>₹${p.price}</strong><br>
+            <button onclick='addToCart("${p.name}", ${p.price})'>Add to Cart</button>
+          `;
+        } else {
+          div.innerHTML = `
+            <img src="${p.img}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <strong>₹${p.price}</strong><br>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick='changeQty("${p.name}", -1)'>−</button>
+              <span>${quantity}</span>
+              <button class="qty-btn" onclick='changeQty("${p.name}", 1)'>＋</button>
+            </div>
+          `;
+        }
+  
         productList.appendChild(div);
       });
   }
+  
+  // Show cart and scroll to it when clicking cart icon
+  cartIcon.addEventListener('click', () => {
+    cartBox.style.display = 'block';
+    cartBox.scrollIntoView({ behavior: 'smooth' });
+  });
   
   function addToCart(name, price) {
     if (cart[name]) {
@@ -52,11 +75,21 @@ const products = [
       cartCountValue += item.quantity;
       const itemTotal = item.price * item.quantity;
       total += itemTotal;
-      cartItems.innerHTML += `<li>${name} x${item.quantity} - ₹${itemTotal}</li>`;
+      cartItems.innerHTML += `
+        <li>
+          ${name} x${item.quantity} - ₹${itemTotal}
+          <br>
+          <button class="qty-btn" onclick='changeQty("${name}", -1)'>−</button>
+          <button class="qty-btn" onclick='changeQty("${name}", 1)'>＋</button>
+        </li>`;
       message += `${i + 1}. ${name} x${item.quantity} - ₹${itemTotal}\n`;
     });
   
     cartCount.textContent = cartCountValue;
+  
+    if (cartCountValue > 0) {
+      cartItems.innerHTML += `<li><strong>Total: ₹${total}</strong></li>`;
+    }
   
     if (cartCountValue === 1) {
       const name = Object.keys(cart)[0];
@@ -68,11 +101,19 @@ const products = [
     } else {
       whatsappLink.href = `https://wa.me/+919760648714`;
     }
+  
+    renderProducts(); // Refresh product list UI to update buttons & quantities
   }
   
-  cartIcon.addEventListener('click', () => {
-    cartBox.style.display = cartBox.style.display === 'none' ? 'block' : 'none';
-  });
+  function changeQty(name, delta) {
+    if (cart[name]) {
+      cart[name].quantity += delta;
+      if (cart[name].quantity <= 0) {
+        delete cart[name];
+      }
+      updateCart();
+    }
+  }
   
   clearCartBtn.addEventListener('click', () => {
     cart = {};
