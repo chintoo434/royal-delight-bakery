@@ -52,11 +52,22 @@ const products = [
       cartCountValue += item.quantity;
       const itemTotal = item.price * item.quantity;
       total += itemTotal;
-      cartItems.innerHTML += `<li>${name} x${item.quantity} - ₹${itemTotal}</li>`;
+      cartItems.innerHTML += `
+        <li>
+          ${name} x${item.quantity} - ₹${itemTotal}
+          <br>
+          <button class="qty-btn" onclick='changeQty("${name}", -1)'>−</button>
+          <button class="qty-btn" onclick='changeQty("${name}", 1)'>＋</button>
+        </li>`;
       message += `${i + 1}. ${name} x${item.quantity} - ₹${itemTotal}\n`;
     });
   
     cartCount.textContent = cartCountValue;
+  
+    // Add total price at the bottom
+    if (cartCountValue > 0) {
+      cartItems.innerHTML += `<li><strong>Total: ₹${total}</strong></li>`;
+    }
   
     if (cartCountValue === 1) {
       const name = Object.keys(cart)[0];
@@ -69,6 +80,18 @@ const products = [
       whatsappLink.href = `https://wa.me/+919760648714`;
     }
   }
+  
+  // New helper function
+  function changeQty(name, delta) {
+    if (cart[name]) {
+      cart[name].quantity += delta;
+      if (cart[name].quantity <= 0) {
+        delete cart[name];
+      }
+      updateCart();
+    }
+  }
+  
   
   cartIcon.addEventListener('click', () => {
     cartBox.style.display = cartBox.style.display === 'none' ? 'block' : 'none';
