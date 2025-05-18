@@ -557,7 +557,7 @@ const products = [
 
 
       {
-        name: '[C46] Chocolate Cake',
+        name: '[C46] Pine Apple',
         desc: '',
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
