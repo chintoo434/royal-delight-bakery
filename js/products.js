@@ -3,9 +3,9 @@ const products = [
       name: '[C01] Doll Cake',
       desc: '',
       sizes: [
-        { label: '1 pound', price: 300 , discount:35},
-        { label: '2 pounds', price: 580, discount:50 },
-        { label: '3 pounds', price: 850, discount:100 }
+        { label: '1 pound', price: 300 , discount:0},
+        { label: '2 pounds', price: 580, discount:0 },
+        { label: '3 pounds', price: 850, discount:0 }
       ],
       img: 'img/cake/C01.jpg',
       category: 'Cake'
@@ -16,7 +16,7 @@ const products = [
       desc: '',
       sizes: [
         { label: '1 pound', price: 300 },
-        { label: '2 pounds', price: 580, discount:30 },
+        { label: '2 pounds', price: 580, discount:0 },
         { label: '3 pounds', price: 850 }
       ],
       img: 'img/cake/C02.jpg',
@@ -149,7 +149,7 @@ const products = [
         name: '[C13] Two tier Cake',
         desc: '',
         sizes: [
-          { label: '3 pounds', price: 750 , discount:150 },
+          { label: '3 pounds', price: 750 , discount:0 },
           { label: '5 pounds', price: 1200 }
         ],
         img: 'img/cake/C13.jpg',
@@ -163,7 +163,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 270, discount:0 },
           { label: '2 pounds', price: 520 },
-          { label: '3 pounds', price: 700, discount:100 }
+          { label: '3 pounds', price: 700, discount:0 }
         ],
         img: 'img/cake/C14.jpg',
         category: 'Cake'
@@ -173,9 +173,9 @@ const products = [
         name: '[C15] Red Velvet',
         desc: '',
         sizes: [
-          { label: '1 pound', price: 550, discount:50 },
-          { label: '2 pounds', price: 1050, discount:100 },
-          { label: '3 pounds', price: 1550, discount:200 }
+          { label: '1 pound', price: 550, discount:0 },
+          { label: '2 pounds', price: 1050, discount:0 },
+          { label: '3 pounds', price: 1550, discount:0 }
         ],
         img: 'img/cake/C15.jpg',
         category: 'Cake'
@@ -188,7 +188,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 270, discount:0 },
           { label: '2 pounds', price: 520 },
-          { label: '3 pounds', price: 700, discount:100 }
+          { label: '3 pounds', price: 700, discount:0 }
         ],
         img: 'img/cake/C16.jpg',
         category: 'Cake'
@@ -201,7 +201,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 250, discount:0 },
           { label: '2 pounds', price: 480 },
-          { label: '3 pounds', price: 720, discount:100 }
+          { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C17.jpg',
         category: 'Cake'
@@ -214,7 +214,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 250, discount:0 },
           { label: '2 pounds', price: 480 },
-          { label: '3 pounds', price: 720, discount:100 }
+          { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C18.jpg',
         category: 'Cake'
@@ -227,7 +227,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 260, discount:0 },
           { label: '2 pounds', price: 500 },
-          { label: '3 pounds', price: 750, discount:100 }
+          { label: '3 pounds', price: 750, discount:0 }
         ],
         img: 'img/cake/C19.jpg',
         category: 'Cake'
@@ -239,7 +239,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 250, discount:0 },
           { label: '2 pounds', price: 480 },
-          { label: '3 pounds', price: 720, discount:100 }
+          { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C20.jpg',
         category: 'Cake'
@@ -252,7 +252,7 @@ const products = [
         sizes: [
           { label: '1 pound', price: 250, discount:0 },
           { label: '2 pounds', price: 480 },
-          { label: '3 pounds', price: 720, discount:100 }
+          { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C21.jpg',
         category: 'Cake'
@@ -265,7 +265,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C22.jpg',
         category: 'Cake'
@@ -277,7 +277,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C23.jpg',
         category: 'Cake'
@@ -289,7 +289,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C24.jpg',
         category: 'Cake'
@@ -301,7 +301,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C25.jpg',
         category: 'Cake'
@@ -313,7 +313,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C26.jpg',
         category: 'Cake'
@@ -325,7 +325,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C27.jpg',
         category: 'Cake'
@@ -337,7 +337,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C28.jpg',
         category: 'Cake'
@@ -350,7 +350,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C29.jpg',
         category: 'Cake'
@@ -362,7 +362,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 300, discount:0 },
             { label: '2 pounds', price: 580 },
-            { label: '3 pounds', price: 850, discount:100 }
+            { label: '3 pounds', price: 850, discount:0 }
         ],
         img: 'img/cake/C30.jpg',
         category: 'Cake'
@@ -374,7 +374,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 300, discount:0 },
             { label: '2 pounds', price: 580 },
-            { label: '3 pounds', price: 850, discount:100 }
+            { label: '3 pounds', price: 850, discount:0 }
         ],
         img: 'img/cake/C31.jpg',
         category: 'Cake'
@@ -386,7 +386,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 350, discount:0 },
             { label: '2 pounds', price: 660 },
-            { label: '3 pounds', price: 950, discount:100 }
+            { label: '3 pounds', price: 950, discount:0 }
         ],
         img: 'img/cake/C32.jpg',
         category: 'Cake'
@@ -398,7 +398,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C33.jpg',
         category: 'Cake'
@@ -410,7 +410,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C34.jpg',
         category: 'Cake'
@@ -422,7 +422,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C35.jpg',
         category: 'Cake'
@@ -435,7 +435,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 280, discount:0 },
             { label: '2 pounds', price: 550 },
-            { label: '3 pounds', price: 820, discount:100 }
+            { label: '3 pounds', price: 820, discount:0 }
         ],
         img: 'img/cake/C34.jpg',
         category: 'Cake'
@@ -448,7 +448,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C37.jpg',
         category: 'Cake'
@@ -460,7 +460,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C38.jpg',
         category: 'Cake'
@@ -485,7 +485,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 300, discount:0 },
             { label: '2 pounds', price: 580 },
-            { label: '3 pounds', price: 850, discount:100 }
+            { label: '3 pounds', price: 850, discount:0 }
         ],
         img: 'img/cake/C40.jpg',
         category: 'Cake'
@@ -498,7 +498,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 280, discount:0 },
             { label: '2 pounds', price: 550 },
-            { label: '3 pounds', price: 820, discount:100 }
+            { label: '3 pounds', price: 820, discount:0 }
         ],
         img: 'img/cake/C41.jpg',
         category: 'Cake'
@@ -510,7 +510,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 280, discount:0 },
             { label: '2 pounds', price: 550 },
-            { label: '3 pounds', price: 850, discount:100 }
+            { label: '3 pounds', price: 850, discount:0 }
         ],
         img: 'img/cake/C42.jpg',
         category: 'Cake'
@@ -523,7 +523,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C43.jpg',
         category: 'Cake'
@@ -536,7 +536,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C44.jpg',
         category: 'Cake'
@@ -549,7 +549,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 260, discount:0 },
             { label: '2 pounds', price: 500 },
-            { label: '3 pounds', price: 740, discount:100 }
+            { label: '3 pounds', price: 740, discount:0 }
         ],
         img: 'img/cake/C45.jpg',
         category: 'Cake'
@@ -562,7 +562,7 @@ const products = [
         sizes: [
             { label: '1 pound', price: 250, discount:0 },
             { label: '2 pounds', price: 480 },
-            { label: '3 pounds', price: 720, discount:100 }
+            { label: '3 pounds', price: 720, discount:0 }
         ],
         img: 'img/cake/C46.jpg',
         category: 'Cake'
@@ -782,10 +782,7 @@ const products = [
       {
         name: '[D11] MAZZA',
         desc: '',
-        sizes: [
-          { label: '750 ml', price: 45, discount:0 },
-          { label: '2000 ml', price: 99, discount:0 }
-      ],
+        price: 10,
         img: 'img/beverage/mazza10.jpg',
         category: 'Beverage'
       },
