@@ -687,10 +687,10 @@ const products = [
 
       // Beverage
       {
-        name: '[D01] COCA COLA',
+        name: '[D01] Coco Cola',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
+          { label: '750 ml', price: 40, discount:0 },
           { label: '2000 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/cocacola.jpg',
@@ -698,18 +698,19 @@ const products = [
       },
 
       {
-        name: '[D02] COCA COLA CAN',
-        desc: '',
-        price: 45,
+        name: '[D02] Coco Cola Can',
+        desc: '300 ml',
+        price: 40,
         img: 'img/beverage/cocacolacan.jpg',
         category: 'Beverage'
       },
 
       {
-        name: '[D03] SPRITE',
+        name: '[D03] Sprite',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
+          { label: '250 ml', price: 20, discount:0 },
+          { label: '750 ml', price: 40, discount:0 },
           { label: '1000 ml', price: 50 },
           { label: '2000 ml', price: 99, discount:0 }
       ],
@@ -718,29 +719,32 @@ const products = [
       },
 
       {
-        name: '[D04] SPRITE CAN',
-        desc: '',
-        price: 45,
+        name: '[D04] Sprite Can',
+        desc: '300 ml',
+        price: 40,
         img: 'img/beverage/spritecan.jpg',
         category: 'Beverage'
       },
 
       {
-        name: '[D05] PEPSI',
+        name: '[D05] Pepsi',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
-          { label: '2000 ml', price: 99, discount:0 }
+          //{ label: '400 ml', price: 20, discount:0 },
+          { label: '750 ml', price: 40, discount:0 },
+          { label: '2250 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/pepsi.jpg',
         category: 'Beverage'
       },
 
       {
-        name: '[D06] THUMS UP',
+        name: '[D06] Thums Up',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
+          { label: '250 ml', price: 20, discount:0 },
+          { label: '750 ml', price: 40, discount:0 },
+          { label: '1000 ml', price: 50, discount:0 },
           { label: '2000 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/thumsup.jpg',
@@ -749,48 +753,104 @@ const products = [
 
 
       {
-        name: '[D08] DEV',
+        name: '[D07] Dev',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
-          { label: '2000 ml', price: 99, discount:0 }
+          { label: '250 ml', price: 20, discount:0 },
+          { label: '750 ml', price: 40, discount:0 },
+          { label: '2250 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/dev.jpg',
         category: 'Beverage'
       },
       {
-        name: '[D09] MAZZA',
+        name: '[D08] Mazza',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
-          { label: '2000 ml', price: 99, discount:0 }
+          { label: '600 ml', price: 40, discount:0 },
+          { label: '1000 ml', price: 60, discount:0 },
+          { label: '1750 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/mazza.jpg',
         category: 'Beverage'
       },
 
       {
-        name: '[D10] FROOTI',
+        name: '[D09] Frooti',
         desc: '',
         sizes: [
-          { label: '750 ml', price: 45, discount:0 },
-          { label: '2000 ml', price: 99, discount:0 }
+          { label: '750 ml', price: 40, discount:0 },
+          { label: '1250 ml', price: 75, discount:0 },
+          //{ label: '1750 ml', price: 99, discount:0 }
       ],
         img: 'img/beverage/frooti.jpg',
         category: 'Beverage'
       },
+
       {
-        name: '[D11] MAZZA',
+        name: '[D10] Slice',
+        desc: '',
+        sizes: [
+          //{ label: '600 ml', price: 40, discount:0 },
+          { label: '1250 ml', price: 75, discount:0 },
+          { label: '1750 ml', price: 99, discount:0 }
+      ],
+        img: 'img/beverage/mazza.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D11] Mazza',
         desc: '',
         price: 10,
         img: 'img/beverage/mazza10.jpg',
         category: 'Beverage'
       },
       {
-        name: '[D12] FROOTI',
+        name: '[D12] Frooti',
         desc: '',
         price: 10,
         img: 'img/beverage/frooti10.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D13] Red Bull',
+        desc: '250 ml',
+        price: 125,
+        img: 'img/beverage/redbull.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D14] Britannia Cow Milk',
+        desc: '180 ml Vanilla',
+        price: 40,
+        img: 'img/beverage/vanilla.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D15] Britannia Cow Milk',
+        desc: '180 ml Choclate',
+        price: 40,
+        img: 'img/beverage/chocolate.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D16] Britannia Cow Milk',
+        desc: '180 ml Strawberry',
+        price: 40,
+        img: 'img/beverage/strawberry.jpg',
+        category: 'Beverage'
+      },
+
+      {
+        name: '[D17] Britannia Lassi',
+        desc: '180 ml',
+        price: 20,
+        img: 'img/beverage/lassi.jpg',
         category: 'Beverage'
       },
 
