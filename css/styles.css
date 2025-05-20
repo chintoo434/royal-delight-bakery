@@ -350,6 +350,37 @@ header h1 {
   margin-bottom: 0.4rem;
 }
 
+.fancy-heading {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: #004aad;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0.6rem auto 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  width: fit-content;
+  max-width: 90%;
+}
+
+/* Center it using a flex wrapper */
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive scaling on small screens */
+@media (max-width: 600px) {
+  .fancy-heading {
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
 .highlight-contact {
   font-size: 1.1rem;
   font-weight: 500;
